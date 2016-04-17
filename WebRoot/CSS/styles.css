@@ -1,0 +1,187 @@
+@CHARSET "UTF-8";
+
+/*  
+ *	p body{} 表示需同时满足p和body标签才行
+ *  p,body{} 表示满足p或body就行
+ */
+body{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+h2 {
+	color: red;
+	background-color:grey;
+	padding: 20px;
+	text-align: center;
+	text-decoration: underline;
+}
+.red {
+	color: red;
+}
+.blue {
+	color: blue;
+}
+p.red {
+	color: #00ff00;
+}
+.important {
+	font-weight: bold;
+}
+.italic {
+	font-style: italic;
+}
+#company {
+	border: 5px solid red;
+}
+*[title] { /* 任意标签中含有title元素 */
+	color: red;
+}
+td[title][name] {
+	font-size: 30px;	
+}
+img[alt="red"] {
+	border: 5px solid red;
+}
+img[alt="blue"] {
+	border: 5px solid blue;
+}
+p[str*="two"] { /* str属性下包括two的字符串 */
+	color: red;
+}
+ul li {
+	color: blue;
+}
+ul > li { /* 子代选择，ul下的子代li */
+	color: green;
+}
+li + li { /* 兄弟选择 ，第一个li的兄弟，不包括第一个li*/
+	font-size: 30px;
+}
+li:first-child {
+	color: #ff0000;
+}
+li:last-child {
+	color: yellow;
+}
+li:first-child + li {
+	color: #cccccc;
+}
+li:first-child + li + li { 
+	color: #000000;
+}
+#t1:first-line {
+	color: blue;
+}
+#t1:first-letter {
+	color: red;
+	font-size:50px;
+}
+#t1{
+	text-indent: 2em ; /* 缩进两格 */
+	letter-spacing: 1em; /* 字间距 */
+}
+
+a:link {color: ff0000}     /* 连接前的颜色 */
+a:visited {color: #00ff00} /* 访问过后的颜色 */
+a:hover {color: #ff00ff}   /* 鼠标放在上面时的颜色 */
+a:active {color: #0000ff}  /* 点击是的颜色 */
+
+span {
+	display: block;
+}
+#divs {
+	width: 300px;
+	height: 300px;
+	border: 1px solid red;
+	position: relative;
+	left: 50px;
+}
+#img1 {
+	position: absolute;
+	left: 50px; /* 被移动元素的左边与包含块元素的左边的距离 */
+}
+#bigdiv {
+	width: 300px;
+	height: 300px;
+	border: 1px solid red;
+}
+#smalldiv1,#smalldiv2,#smalldiv3 {
+	width: 100px;
+	height: 100px;
+	border: 1px solid blue;
+	margin: 2px;
+}
+#smalldiv1,#smalldiv2,#smalldiv3 { /* 满足其中一个就行 */
+	float: left;
+}
+#smalldiv1 {
+	height: 150px;
+}
+#divclear {
+	border: 1px solid red;
+}
+#img3 {
+	float: left;
+}
+#p3 {
+	float: right;
+}
+.clear {
+	/* none,both,left,right */
+	clear: both;
+}
+ul {
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+li a { /* 得同时满足两个才行 */
+	float: left;	
+	text-decoration: none;
+	border: 1px solid red;
+	width: 8em;
+	margin: 5px;
+	background-color: purple;
+	color: white;
+	text-align: center;
+	font-size: 30px;
+}
+a:hover { /* 鼠标放上面时的表现 */
+	background-color: #ff3300;
+}
+li {
+	display: inline; /* 让表格的所有行在一条线上 */
+}
+#head {
+	width: 100%;
+	background-color: grey;
+	float: left;
+	font-size: 50px;
+}
+#left {
+	width: 45%;
+	float: left;
+	border-right: 1px solid grey;
+}
+#right {
+	width: 55%;
+	float: right;
+	border-left: 1px solid grey;
+}
+#foot {
+	width: 100%;
+	background-color: grey;
+	float: left;
+	font-size: 30px;
+}
+
+
+
+
+
+
+
