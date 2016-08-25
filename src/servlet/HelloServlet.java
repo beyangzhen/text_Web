@@ -8,22 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/*web.xmlÖĞÅäÖÃÁËservlet*/
+/*web.xmlä¸­é…ç½®äº†servlet*/
 public class HelloServlet extends HttpServlet {
 	String username = null;
 	String password = null;
 	String contextName = null;
 	
-	//tomcatÆô¶¯¹ı³ÌÖĞµ÷ÓÃ
+	//tomcatå¯åŠ¨è¿‡ç¨‹ä¸­è°ƒç”¨
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		//»ñÈ¡web.xmlÖĞservletÖĞ¶¨ÒåµÄ±äÁ¿
+		//è·å–web.xmlä¸­servletä¸­å®šä¹‰çš„å˜é‡
 		username = config.getInitParameter("username"); 
 		password = config.getInitParameter("password");
 		
-		super.init(config); //Õâ¸ösuper()²»¿ÉÒÔÉ¾³ı
+		super.init(config); //è¿™ä¸ªsuper()ä¸å¯ä»¥åˆ é™¤
 	}
 
+	//å¿…é¡»æ‰§è¡Œäº†init()åï¼Œå…³é—­æ—¶destory()æ‰ä¼šè¢«æ‰§è¡Œ
 	@Override
 	public void destroy() {
 		super.destroy();
@@ -32,19 +33,29 @@ public class HelloServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		//super.doGet(req, resp); //Õâ¸ösuper()±ØĞëÉ¾³ı
-		resp.getWriter().println("doGet!");	
+		//super.doGet(req, resp); //è¿™ä¸ªsuper()å¿…é¡»åˆ é™¤
 		
-		//ÓÃÓÚServletContextAttributeListener¼àÌı
+		response.getWriter().write("<h1>deGet!<h1>");
+		response.getWriter().println("<h1>deGet!<h1>");
+		
+		//æŸ¥çœ‹é¡¹ç›®éƒ¨ç½²çš„çœŸå®è·¯å¾„
+		String path = getServletContext().getRealPath("com/servlet/MyServlet");
+		response.getWriter().println(path);
+		
+		//å®ç°é‡å®šå‘
+		response.setStatus(302);
+		response.setHeader("location", "index.jsp");	
+		
+		//ç”¨äºServletContextAttributeListenerç›‘å¬
 		this.getServletContext().setAttribute("listener", "listener");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		//»ñÈ¡web.xmlÖĞcontextParam±äÁ¿
+		//è·å–web.xmlä¸­contextParamå˜é‡
 		contextName = this.getServletContext().getInitParameter("contextName");
-		resp.getWriter().println("doPost!");
+		resp.getWriter().println("<h1>doPost!</h1>");
 		resp.getWriter().println(username);
 		resp.getWriter().println(password);
 		resp.getWriter().println(contextName);
