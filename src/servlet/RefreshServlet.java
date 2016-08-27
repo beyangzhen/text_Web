@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * refresh: 时间[秒];url=
  * 
  */
-  @WebServlet("/RefreshServlet")
+@WebServlet("/RefreshServlet")
 public class RefreshServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
