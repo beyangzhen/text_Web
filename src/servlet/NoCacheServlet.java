@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * 1. Cache-Control: no-cache , Pragma: no-cache, Expires: -1
  * 2. 在请求路径里添加?_dc=1472205435880[用js产生：new Date().getTime() --》 extjs ]
  */
+ @WebServlet("/NoCacheServlet")
 public class NoCacheServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
