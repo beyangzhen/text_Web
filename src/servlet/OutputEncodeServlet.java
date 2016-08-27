@@ -31,10 +31,8 @@ public class OutputEncodeServlet extends HttpServlet {
 	private void run1(HttpServletResponse response) throws IOException {
 		// 设置浏览器打开时的编码
 		response.setHeader("Content-Type", "text/html;charset=UTF-8");
-		// 获取字节输出流
-		OutputStream os = response.getOutputStream();
-		// 输出中文
-		os.write("吃饭，睡觉，打豆豆".getBytes("UTF-8")); // ****** getBytes() FindBugs, PMD 静态代码检测工具的告诉你
+		// 字节输出流
+		response.getOutputStream().write("吃饭，睡觉，打豆豆".getBytes("UTF-8")); // ****** getBytes() FindBugs, PMD 静态代码检测工具的告诉你
 	}
 
 	/**
