@@ -49,13 +49,13 @@ public class OutputEncodeServlet extends HttpServlet {
 	 */
 	private void run2(HttpServletResponse response) throws IOException {
 		System.out.println("2-------------------");
-		/**方式一**/
+				/**方式一**/
 		// 设置charsetEncoding
 		//response.setCharacterEncoding("UTF-8");
 		// 设置浏览器打开文件所采用的编码
 		//response.setHeader("Content-Type", "text/html;charset=UTF-8");
 		
-		/**方式二（简单方式）**/
+				/**方式二（简单方式）**/
 		response.setContentType("text/html;charset=UTF-8");
 		
 		// 字符输出
