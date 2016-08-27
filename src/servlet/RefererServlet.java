@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /**
- * ������
+ * ·ÀµÁÁ´
  */
 @WebServlet("/RefererServlet")
 public class RefererServlet extends HttpServlet {
@@ -20,7 +20,9 @@ public class RefererServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ref = request.getHeader("Referer");
 		
+		
 		if (ref == null || ref == "" || !ref.startsWith("http://localhost")) {
+			//表示从其他服务器连接来（由于空指针异常ref不能为空，所以ref == null || ref == ""）
 			response.sendRedirect(request.getContextPath() + "/homePage.html");
 		} else {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/fengjie.html").forward(request, response);
