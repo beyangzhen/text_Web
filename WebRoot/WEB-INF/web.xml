@@ -12,7 +12,7 @@
   <!--运行出错后，自动跳转的页面-->
   <error-page>
 	<error-code>404</error-code>
-	<location>/404.jsp</location>
+	<location>/loginFail.jsp</location>
   </error-page>
   
   <context-param>
