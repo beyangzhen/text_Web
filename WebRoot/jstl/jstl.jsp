@@ -48,6 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      %>
     <c:forEach var="item" items="${requestScope.list }" varStatus="status">
     	<span
+    		<!-- var代表每次获取的(一组)值 -->
     		<!-- status代表索引下标 -->
     		<c:if test="${status.index%2==1 }">
     			style="background:#ff0000"
@@ -56,7 +57,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	${item }<br>
     	</span>
     	
-    	<c:out >
+    	<c:out value="${item}"></c:out>
+    	<c:out value="${status.count}"></c:out>
+    	<!--
+    	<c:out value="${item.key}"></c:out>
+    	<c:out value="${item.value}"></c:out>
+    	-->
+    	
     </c:forEach>
     
     <c:set var="var" value="10" scope="page"></c:set>
