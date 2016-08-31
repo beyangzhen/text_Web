@@ -55,6 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	>
     	${item }<br>
     	</span>
+    	
+    	<c:out >
     </c:forEach>
     
     <c:set var="var" value="10" scope="page"></c:set>
