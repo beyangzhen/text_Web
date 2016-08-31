@@ -27,6 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
  <!--  使用前需要导入资源<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
  <!-- span标签下的直接元素才会变颜色  -->
+    <c:set property="name" value="yz" target="${user}"></c:set>
+    
     <c:set var="example" value="${100+1 }" scope="session"></c:set>
     value: ${example }<br>
     value:<c:out value="${example }"/><br>
