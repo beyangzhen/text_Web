@@ -48,6 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      %>
     <c:forEach var="item" items="${requestScope.list }" varStatus="status">
     	<span
+    		<!-- status代表索引下标 -->
     		<c:if test="${status.index%2==1 }">
     			style="background:#ff0000"
     		</c:if>
@@ -55,6 +56,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	${item }<br>
     	</span>
     </c:forEach>
+    
+    <c:set var="var" value="10" scope="page"></c:set>
+    <c:choose>
+    	<c:when test="${var gt 10}">
+    	    var &gt; 10
+    	</c:when>
+    	<c:when test="${var lt 10}">
+    	    var &lt; 10
+    	</c:when>
+    	<c:otherwise>
+    	    var &et; 10
+    	</c:otherwise>
+    </c:choose>
     
   </body>
 </html>
