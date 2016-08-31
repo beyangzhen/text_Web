@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <!-- requestScope,param,paramValues,pageContext -->
   
-  requestScope对象:
+  requestScope对象:（或sessionScope）
     <%	
     	Map names = new HashMap();
     	names.put("one", "杨祯");
