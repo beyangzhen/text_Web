@@ -21,7 +21,7 @@
 	        function dosubmit(){
 			//获取表单提交按钮
 			var btnSubmit = document.getElementById("submit");
-			//将表单提交按钮设置为不可用，这样就可以避免用户再次点击提交按钮
+			//第一次点击提交后将表单提交按钮设置为不可用
 			btnSubmit.disabled= "disabled";
 			//返回true让表单可以正常提交
 			return true;
