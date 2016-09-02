@@ -46,7 +46,7 @@ public class SAX_Xml {
 			@Override
 			public void characters(char[] ch, int start, int length) throws SAXException {
 				String text = new String(ch, start, length);
-				if (pro != null && !"".equals(text)) {
+				if (file != null && !"".equals(text)) {
 					System.out.println("标签内的文本"+text);
 				}
 			}	
