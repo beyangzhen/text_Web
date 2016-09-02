@@ -66,9 +66,9 @@ public class Dom_Xml {
 		TransformerFactory instance = TransformerFactory.newInstance();
 		// 回写类
 		Transformer transformer = instance.newTransformer();
+		// 回写方法
 		Source xmlSource = new DOMSource(document);
 		Result outputTarget = new StreamResult(pro);
-		// 回写方法
 		transformer.transform(xmlSource, outputTarget);
 		
 	}
