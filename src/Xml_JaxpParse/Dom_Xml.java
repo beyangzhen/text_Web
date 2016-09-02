@@ -37,7 +37,7 @@ public class Dom_Xml {
 
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerException {
 		// 取.project文件
-		File pro = new File(".project");
+		File file = new File(".project");
 		System.out.println(pro.getAbsolutePath());
 		
 		// 解析器工厂类
@@ -45,7 +45,7 @@ public class Dom_Xml {
 		// 解析器对象
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		// 解析文档, 获取文档对象
-		Document document = builder.parse(pro);
+		Document document = builder.parse(file);
 		// 获取标签
 		NodeList list = document.getElementsByTagName("name");
 		Node node = list.item(0);	
