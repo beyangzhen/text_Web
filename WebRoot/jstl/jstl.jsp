@@ -25,8 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   
- <!--  使用前需要导入资源<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
- <!-- span标签下的直接元素才会变颜色  -->
+ <!--  core标签库：使用前需要导入资源<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
+ <!--  fn标签库  ：使用前需要导入资源<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> -->
+ 
+    <!-- span标签下的直接元素才会变颜色  -->
     <c:set property="name" value="yz" target="${user}"></c:set>
     
     <c:set var="example" value="${100+1 }" scope="session"></c:set>
@@ -78,6 +80,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	    var &et; 10
     	</c:otherwise>
     </c:choose>
+    
+    
+    <br/>
+    ${fn:trim("  hello   ")} 
+    <br/>
+    ${fn:toUpperCase("world")}
     
   </body>
 </html>
