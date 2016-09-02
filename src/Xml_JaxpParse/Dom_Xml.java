@@ -68,7 +68,7 @@ public class Dom_Xml {
 		Transformer transformer = instance.newTransformer();
 		// 回写方法
 		Source xmlSource = new DOMSource(document);
-		Result outputTarget = new StreamResult(pro);
+		Result outputTarget = new StreamResult(file);
 		transformer.transform(xmlSource, outputTarget);
 		
 	}
