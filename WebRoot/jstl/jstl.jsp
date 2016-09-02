@@ -27,7 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
  <!--  core标签库：使用前需要导入资源<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
  <!--  fn标签库  ：使用前需要导入资源<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> -->
+ <!--  fmt标签库 ：使用前需要导入资源<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> -->
  
+ 
+    						<!-- core标签库-->
+ 						
     <!-- span标签下的直接元素才会变颜色  -->
     <c:set property="name" value="yz" target="${user}"></c:set>
     
@@ -81,11 +85,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</c:otherwise>
     </c:choose>
     
-    
+    						<!-- fn标签库 -->
     <br/>
     ${fn:trim("  hello   ")} 
     <br/>
     ${fn:toUpperCase("world")}
+    
+    						<!-- fmt标签库-->
+    
+    <%-- 有时会附带jseesionid=xxxxxx --%>
+	<a href='<c:url value="login_fmt.jsp?lan=zh"></c:url>'>中文</a>
+	<a href='<c:url value="login_fmt.jsp?lan=en"></c:url>'>英文</a>
+	
+	<%-- 根据参数设置默认语系 --%>
+	<c:choose>
+		<c:when test="${param.lan == 'en' }">
+			<fmt:setLocale value="en"/>
+		</c:when>
+		<c:otherwise>
+			<fmt:setLocale value="zh"/>
+		</c:otherwise>
+	</c:choose>
+	
+	<%-- 引入资源 --%>
+	<fmt:setBundle basename="com.wxhledu.webapp.message" var="bundle"/>
+	
+	<%-- 获取资源 --%>	
+	<fmt:message bundle="${bundle }" key="login.title"/>
+	<form action="">
+		<fmt:message bundle="${bundle }" key="login.label.name"/><input type="text" name="name"><br>
+		<fmt:message bundle="${bundle }" key="login.label.password"/><input type="password" name="password"><br>
+		<input type="submit" value="<fmt:message bundle="${bundle }" key="login.label.submit"/>">
+	</form>
     
   </body>
 </html>
