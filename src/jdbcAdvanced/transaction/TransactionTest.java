@@ -1,4 +1,4 @@
-package com.wxhledu.cn.transaction;
+package jdbcAdvanced.transaction;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import org.junit.Test;
 
-import com.wxhledu.cn.util.JdbcUtil;
+import jdbcAdvanced.JdbcUtil;
 
 public class TransactionTest {
 
