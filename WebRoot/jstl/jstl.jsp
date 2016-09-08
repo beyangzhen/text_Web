@@ -41,7 +41,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <c:remove var="example"/>
     
     <c:if test="${3==3 }">
-    <c:out value="相等"/><br>
+    	<!--
+    	c:if的test中的只能写一个el表达式
+    	    比如：${pageBean.currentPage == 1 && pageBean.totalPage == 2 }
+    	-->
+    	<c:out value="相等"/><br>
     </c:if>
     
     <%
@@ -54,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      %>
     <c:forEach var="item" items="${requestScope.list }" varStatus="status"> 
     <!--
-   	其他属性：
+    其他属性：
 	    begin(默认0)  	     ：开始索引 
 	    end(默认集合最后一个元素)：结束索引	
     -->
