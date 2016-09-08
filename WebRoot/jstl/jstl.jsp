@@ -52,7 +52,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	list.add("four");
     	request.setAttribute("list", list);
      %>
-    <c:forEach var="item" items="${requestScope.list }" varStatus="status">
+    <c:forEach var="item" items="${requestScope.list }" varStatus="status"> 
+    <!--
+   	其他属性：
+	    begin(默认0)  	     ：开始索引 
+	    end(默认集合最后一个元素)：结束索引	
+    -->
+    
     	<span
     		<!-- var代表每次获取的(一组)值 -->
     		<!-- status代表索引下标 -->
