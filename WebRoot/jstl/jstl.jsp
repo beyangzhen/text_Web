@@ -78,7 +78,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</span>
     	
     	<c:out value="${item}"></c:out>
-    	<c:out value="${status.count}"></c:out>
+    	<c:out value="${status.count}"></c:out> <!-- 从1开始 -->
+    	<c:out value="${status.index}"></c:out> <!-- 从0开始 -->
     	<!--
     	<c:out value="${item.key}"></c:out>
     	<c:out value="${item.value}"></c:out>
