@@ -67,6 +67,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<!-- var代表每次获取的(一组)值 -->
     		<!-- status代表索引下标 -->
     		<c:if test="${status.index%2==1 }">
+    		<!--
+	    	c:if的test中的只能写一个el表达式
+	    	    比如：${pageBean.currentPage == 1 && pageBean.totalPage == 2 }
+	    	-->
     			style="background:#ff0000"
     		</c:if>
     	>
