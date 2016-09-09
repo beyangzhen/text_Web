@@ -1,4 +1,4 @@
-package com.wxhledu.cn.dbcp;
+package DBUtils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,14 +10,13 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import org.junit.Test;
 
 import com.mchange.v2.c3p0.DataSources;
-import com.wxhledu.cn.domain.Account;
 
 public class ResultSetHandlerTest {
 
 	@Test
 	public void test() throws SQLException{
-		// 1.创建QueryRunner对象
-		QueryRunner runner = new QueryRunner(DataSources.unpooledDataSource("jdbc:mysql:///day18", "root", ""));
+		// 1.创建查询器
+		QueryRunner runner = new QueryRunner(DataSources.unpooledDataSource("jdbc:mysql:///test", "root", ""));
 		// 3.创建结果集处理器
 		ResultSetHandler<List<Account>> rsh = new ResultSetHandler<List<Account>>() {
 
