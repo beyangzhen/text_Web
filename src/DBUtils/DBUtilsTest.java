@@ -59,12 +59,10 @@ public class DBUtilsTest {
 		}
 		
 	}
-	
-	/**
-	 *  javaBean => 表格记录字段不一致
-	 */
+
 	// QueryRunner(DataSource ds) 
 	// ResultSetHandler()
+	// javaBean 与 表格记录字段不一致
 	@Test
 	public void testQuery3() throws SQLException{
 		// 1.使用带数据源的构造器创建QueryRunner
@@ -93,5 +91,31 @@ public class DBUtilsTest {
 		List<Acc> list = runner.query("select * from account", rsh);
 		// 4. 打印结果
 		System.out.println(list);
+	}
+	
+	// QueryRunner()
+	@Test
+	public void testInsert() throws SQLException{
+		QueryRunner runner = new QueryRunner();
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql:///test", "root", "");
+			int update = runner.update(conn, "insert into account values(null, 'a', 20)");
+			System.out.println(update);
+		} finally {
+			conn.close();
+		}
+		
+	}
+	
+	// QueryRunner(DataSource ds)
+	@Test
+	public void testUpdate() throws SQLException{
+		// 1. 创建带数据源构造器的QueryRunner对象
+		QueryRunner runner = new QueryRunner(DataSources.unpooledDataSource("jdbc:mysql:///test", "root", ""));
+		// 2. 执行数据更新操作
+		int update = runner.update("update account set money = ? where name='my'", 4000);
+		// 3. 处理结果
+		System.out.println(update);
 	}
 }
