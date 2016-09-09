@@ -81,27 +81,5 @@ public class QueryRunnerTest {
 		System.out.println(list);
 	}
 	
-	@Test
-	public void testInsert() throws SQLException{
-		QueryRunner runner = new QueryRunner();
-		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection("jdbc:mysql:///test", "root", "");
-			int update = runner.update(conn, "insert into account values(null, 'a', 20)");
-			System.out.println(update);
-		} finally {
-			conn.close();
-		}
-		
-	}
 	
-	@Test
-	public void testUpdate() throws SQLException{
-		// 1. 创建带数据源构造器的QueryRunner对象
-		QueryRunner runner = new QueryRunner(DataSources.unpooledDataSource("jdbc:mysql:///test", "root", ""));
-		// 2. 执行数据更新操作
-		int update = runner.update("update account set money = ? where name='my'", 4000);
-		// 3. 处理结果
-		System.out.println(update);
-	}
 }
