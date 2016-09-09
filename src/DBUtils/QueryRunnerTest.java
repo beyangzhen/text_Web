@@ -63,11 +63,14 @@ public class QueryRunnerTest {
 				// 解决javaBean 与 表格记录字段不一致
 				List<Acc> list = new ArrayList<>();
 				while (rs.next()) {
+					/*
 					Acc acc = new Acc();
 					acc.setIdx(rs.getInt(1));
 					acc.setUsername(rs.getString(2));
 					acc.setRmb(rs.getDouble(3));
 					list.add(acc);
+					*/
+					list.add(new Account(rs.getInt(1), rs.getString(2), rs.getDouble(3)));
 				}
 				return list;
 			}
