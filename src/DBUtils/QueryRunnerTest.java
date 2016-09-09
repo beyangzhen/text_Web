@@ -15,8 +15,6 @@ import org.junit.Test;
 import com.mchange.v2.c3p0.DataSources;
 
 /**
- * 1. QueryRunner() ：query(conn, sql, rsh) connection             	方式可以设置事务
- * 2. QueryRunner(DataSource ds) ：query(sql, rsh) 和 update(sql, ...)  不好设置事务
  * 		
  * @author yz
  *
@@ -31,8 +29,9 @@ public class QueryRunnerTest {
 		}
 	}
 
+	// 1. QueryRunner() ：query(conn, sql, rsh)  （connection方式可以设置事务）
 	@Test
-	public void test1() throws SQLException, ClassNotFoundException{
+	public void testQuery1() throws SQLException, ClassNotFoundException{
 		QueryRunner runner = new QueryRunner();
 		Connection conn = null;
 		try {
@@ -48,36 +47,20 @@ public class QueryRunnerTest {
 		
 	}
 	
-	
-	
-	@Test
-	public void testInsert1() throws SQLException{
-		QueryRunner runner = new QueryRunner();
-		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection("jdbc:mysql:///test", "root", "");
-			int update = runner.update(conn, "insert into account values(null, 'a', 20)");
-			System.out.println(update);
-		} finally {
-			conn.close();
-		}
-		
-	}
-	
-	
 	/**
-	 * JavaBean => 表格记录字段不一致
-	 * @throws SQLException
+	 *  javaBean => 表格记录字段不一致
 	 */
+	// 2. QueryRunner(DataSource ds) ：query(sql, rsh) 和 update(sql, ...)  （不好设置事务）
 	@Test
 	public void testQuery2() throws SQLException{
 		// 1.使用带数据源的构造器创建QueryRunner
 		QueryRunner runner = new QueryRunner(DataSources.unpooledDataSource("jdbc:mysql:///test", "root", ""));
 		// 3. 创建结果集处理器
 		ResultSetHandler<List<Acc>> rsh = new ResultSetHandler<List<Acc>>() {
-
+		
 			@Override
 			public List<Acc> handle(ResultSet rs) throws SQLException {
+				// 解决javaBean 与 表格记录字段不一致
 				List<Acc> list = new ArrayList<>();
 				while (rs.next()) {
 					Acc acc = new Acc();
@@ -96,7 +79,21 @@ public class QueryRunnerTest {
 	}
 	
 	@Test
-	public void testUpdate2() throws SQLException{
+	public void testInsert() throws SQLException{
+		QueryRunner runner = new QueryRunner();
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql:///test", "root", "");
+			int update = runner.update(conn, "insert into account values(null, 'a', 20)");
+			System.out.println(update);
+		} finally {
+			conn.close();
+		}
+		
+	}
+	
+	@Test
+	public void testUpdate() throws SQLException{
 		// 1. 创建带数据源构造器的QueryRunner对象
 		QueryRunner runner = new QueryRunner(DataSources.unpooledDataSource("jdbc:mysql:///test", "root", ""));
 		// 2. 执行数据更新操作
