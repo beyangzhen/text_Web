@@ -118,7 +118,9 @@ public class Upload1Servlet extends HttpServlet {
 			//取扩展名
 			String extension = FilenameUtils.getExtension(fn);
 			System.out.println(extension);
-			String name = FilenameUtils.getBaseName(fn);
+			String BaseName = FilenameUtils.getBaseName(fn);
+			System.out.println(BaseName);
+			String name = FilenameUtils.getName(fn);
 			System.out.println(name);
 		}
 		
