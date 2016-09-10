@@ -53,7 +53,7 @@ public class UploadFileServlet extends HttpServlet {
 					if(!item.isFormField()) {
 						String name = item.getName(); 		// ①获取名称（但，IE浏览器下带路径）
 						name = FilenameUtils.getName(name); // ②获取名称
-						// 将文件存入项目中
+						// 将文件存入项目中uploadFile文件夹下（前提：该文件夹要存在） --> 只能自动给创建文件，不能自动创建文件夹
 						String uploadPath = this.getServletContext().getRealPath("/uploadFile");
 						// File.separator 在windows是 \  在unix是 /
 						/** ②该上传文件是永久的 */
