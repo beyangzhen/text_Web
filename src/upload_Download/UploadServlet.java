@@ -49,7 +49,7 @@ public class Upload1Servlet extends HttpServlet {
 		IOUtils.closeQuietly(is);
 		
 		
-					    /* ②apache commons-fileupload获取文件指定信息 和 复制文件(即：上传文件) */
+					    /* ②apache commons-fileupload获取文件指定信息 和 复制文件 */
 		// 创建文件目录工厂
 		DiskFileItemFactory factory = new DiskFileItemFactory();		
 		// 创建文件下载对象
@@ -59,7 +59,7 @@ public class Upload1Servlet extends HttpServlet {
 			List<FileItem> items = upload.parseRequest(request);
 			// 遍历集合
 			for (FileItem item : items) {
-				String name = item.getName(); 		// 文件本身的名称（特例：IE会获取全路径）
+				String name = item.getName(); // 文件本身的名称
 				String contentType = item.getContentType();
 				long size = item.getSize();
 				String fieldName = item.getFieldName(); // 表单上取得名称
@@ -67,7 +67,8 @@ public class Upload1Servlet extends HttpServlet {
 				// 再把文件复制
 				if(!item.isFormField()){ // 文件部分 <input type="file">					
 					String uploadPath = "C:\\Users\\qinhaizong\\WXHL\\upload\\";
-					// IOUtils 复制文件
+					// IOUtils 复制文件（1. 当文件很小，就直接存进缓存）
+					//				   （2. 当文件超出缓存，就会存入部署处的临时文件里）
 					IOUtils.copy(item.getInputStream(), new FileOutputStream(uploadPath+name)); 
 				} else { 				 // 正常表单内容部分 <input type="text">									
 				}
@@ -101,7 +102,7 @@ public class Upload1Servlet extends HttpServlet {
 		}
 		
 		
-					    /* ②网页文件，apache commons-fileupload复制文件(即：上传文件) */
+					    /* ②网页文件，apache commons-fileupload复制文件 */
 		@Test
 		public void testIOUtils() throws MalformedURLException, IOException{
 			InputStream in = new URL( "http://commons.apache.org" ).openStream();
@@ -120,11 +121,7 @@ public class Upload1Servlet extends HttpServlet {
 			//取扩展名
 			String extension = FilenameUtils.getExtension(fn);
 			System.out.println(extension);
-			//取基名
-			String BaseName = FilenameUtils.getBaseName(fn);
-			System.out.println(BaseName);
-			//取全名（不是全路径）
-			String name = FilenameUtils.getName(fn);
+			String name = FilenameUtils.getBaseName(fn);
 			System.out.println(name);
 		}
 		
