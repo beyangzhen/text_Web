@@ -49,7 +49,7 @@ public class Upload1Servlet extends HttpServlet {
 		IOUtils.closeQuietly(is);
 		
 		
-					    /* ②apache commons-fileupload获取文件指定信息 和 复制文件 */
+					    /* ②apache commons-fileupload获取文件指定信息 和 复制文件(即：上传文件) */
 		// 创建文件目录工厂
 		DiskFileItemFactory factory = new DiskFileItemFactory();		
 		// 创建文件下载对象
@@ -101,7 +101,7 @@ public class Upload1Servlet extends HttpServlet {
 		}
 		
 		
-					    /* ②网页文件，apache commons-fileupload复制文件 */
+					    /* ②网页文件，apache commons-fileupload复制文件(即：上传文件) */
 		@Test
 		public void testIOUtils() throws MalformedURLException, IOException{
 			InputStream in = new URL( "http://commons.apache.org" ).openStream();
