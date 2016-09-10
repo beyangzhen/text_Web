@@ -71,6 +71,8 @@ public class Upload1Servlet extends HttpServlet {
 					IOUtils.copy(item.getInputStream(), new FileOutputStream(uploadPath+name)); 
 				} else { 				 // 正常表单内容部分 <input type="text">									
 				}
+				// 删除文件（前提：是在临时目录下）
+				item.delete();
 			}
 		} catch (FileUploadException e) {
 			e.printStackTrace();
