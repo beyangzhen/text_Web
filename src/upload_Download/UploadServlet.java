@@ -25,10 +25,10 @@ import org.apache.commons.io.IOUtils;
  *  4.FileItem
  */
 @WebServlet("/upload")
-public class Upload1Servlet extends HttpServlet {
+public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Upload1Servlet() {
+    public UploadServlet() {
         super();
     }
 
