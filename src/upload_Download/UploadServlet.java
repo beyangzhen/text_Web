@@ -19,9 +19,10 @@ import org.apache.commons.io.IOUtils;
 
 
 /**
- *  1.fileupload
+ *  1.DiskFileItemFactory
  *  2.IOUtils工具类
- *  3.FilenameUtils工具类
+ *  3.ServletFileUpload
+ *  4.FileItem
  */
 @WebServlet("/upload")
 public class Upload1Servlet extends HttpServlet {
@@ -52,7 +53,7 @@ public class Upload1Servlet extends HttpServlet {
 					    /* ②apache commons-fileupload获取文件指定信息 和 复制文件 */
 		// 创建文件目录工厂
 		DiskFileItemFactory factory = new DiskFileItemFactory();		
-		// 创建文件下载对象
+		// 创建上传工具
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		try {
 			// 解析request传来的内容
