@@ -18,7 +18,7 @@ import org.apache.commons.io.IOUtils;
  *
  *
  *	如果单独使用 response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename,"UTF-8"));
- *  --> 能将文件下载，但是一个无效的文件															 
+ *  	--> 能将文件下载，但是一个无效的文件															 
  *
  */
 @WebServlet("/download")
@@ -42,8 +42,6 @@ public class DownloadServlet extends HttpServlet {
 		
 		inputStream.close();
 		
-		//只使用 response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename,"UTF-8"));
-		//     -->能将文件下载，但是一个无效的文件
 	}
 
 }
