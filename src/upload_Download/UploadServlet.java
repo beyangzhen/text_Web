@@ -59,7 +59,7 @@ public class Upload1Servlet extends HttpServlet {
 			List<FileItem> items = upload.parseRequest(request);
 			// 遍历集合
 			for (FileItem item : items) {
-				String name = item.getName(); 		// 文件本身的名称
+				String name = item.getName(); 		// 文件本身的名称（特例：IE会获取全路径）
 				String contentType = item.getContentType();
 				long size = item.getSize();
 				String fieldName = item.getFieldName(); // 表单上取得名称
@@ -118,8 +118,10 @@ public class Upload1Servlet extends HttpServlet {
 			//取扩展名
 			String extension = FilenameUtils.getExtension(fn);
 			System.out.println(extension);
+			//取基名
 			String BaseName = FilenameUtils.getBaseName(fn);
 			System.out.println(BaseName);
+			//取全名（不是全路径）
 			String name = FilenameUtils.getName(fn);
 			System.out.println(name);
 		}
