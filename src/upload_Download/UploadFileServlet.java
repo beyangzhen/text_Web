@@ -39,7 +39,7 @@ public class UploadFileServlet extends HttpServlet {
 			  * 			 2. 当文件超出缓存，就会默认存入部署处的临时文件里
 			  */
 			ServletContext servletContext = this.getServletConfig().getServletContext();
-			File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir"); // 获取临时目录
+			File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir"); // 获取临时目录（部署目录/work下）
 			System.out.println("repository:" + repository.getAbsolutePath());
 			DiskFileItemFactory factory = new DiskFileItemFactory(1024 * 100, repository); // 缓存为100kb
 			// 创建ServletFileUpload
@@ -54,7 +54,7 @@ public class UploadFileServlet extends HttpServlet {
 						String name = item.getName(); 		// ①获取名称（但，IE浏览器下带路径）
 						name = FilenameUtils.getName(name); // ②获取名称
 						// 将文件存入项目中uploadFile文件夹下（前提：该文件夹要存在） --> 只能自动给创建文件，不能自动创建文件夹
-						String uploadPath = this.getServletContext().getRealPath("/uploadFile");
+						String uploadPath = this.getServletContext().getRealPath("/uploadFile"); // 项目部署目录（部署目录/webapps下）
 						// File.separator 在windows是 \  在unix是 /
 						/** ②该上传文件是永久的 */
 						IOUtils.copy(item.getInputStream(), new FileOutputStream(uploadPath + File.separator + name));
