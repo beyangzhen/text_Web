@@ -59,7 +59,7 @@ public class Upload1Servlet extends HttpServlet {
 			List<FileItem> items = upload.parseRequest(request);
 			// 遍历集合
 			for (FileItem item : items) {
-				String name = item.getName(); // 文件本身的名称
+				String name = item.getName(); 		// 文件本身的名称
 				String contentType = item.getContentType();
 				long size = item.getSize();
 				String fieldName = item.getFieldName(); // 表单上取得名称
