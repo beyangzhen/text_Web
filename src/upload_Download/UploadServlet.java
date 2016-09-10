@@ -68,7 +68,7 @@ public class Upload1Servlet extends HttpServlet {
 				if(!item.isFormField()){ // 文件部分 <input type="file">					
 					String uploadPath = "C:\\Users\\qinhaizong\\WXHL\\upload\\";
 					// IOUtils 复制文件（1. 当文件很小，就直接存进缓存）
-					//				   （2. 当文件超出缓存，就会存入部署处的临时文件里）
+					//		   （2. 当文件超出缓存，就会默认存入部署处的临时文件里）
 					IOUtils.copy(item.getInputStream(), new FileOutputStream(uploadPath+name)); 
 				} else { 				 // 正常表单内容部分 <input type="text">									
 				}
