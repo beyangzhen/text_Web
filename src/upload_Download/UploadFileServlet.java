@@ -34,25 +34,31 @@ public class UploadFileServlet extends HttpServlet {
 		// 判断是否为标准的文件上传表单
 		boolean flag = ServletFileUpload.isMultipartContent(request);
 		if (flag) {
-			// 创建DiskFileItemFactory（附带缓存大小，存放路径）
+			// 创建DiskFileItemFactory（附带缓存大小，临时文件存储位置）
+			/**  ①临时文件存储: 1. 当文件很小，就直接存进缓存
+			  * 			 2. 当文件超出缓存，就会默认存入部署处的临时文件里
+			  */
 			ServletContext servletContext = this.getServletConfig().getServletContext();
 			File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir"); // 获取临时目录
 			System.out.println("repository:" + repository.getAbsolutePath());
-			DiskFileItemFactory factory = new DiskFileItemFactory(1024 * 100, repository);
-			// 创建上传工具
+			DiskFileItemFactory factory = new DiskFileItemFactory(1024 * 100, repository); // 缓存为100kb
+			// 创建ServletFileUpload
 			ServletFileUpload upload = new ServletFileUpload(factory);
+			// 设置文件中编码
 			upload.setHeaderEncoding("utf-8");
 			try {
 				// 解析文件
 				List<FileItem> items = upload.parseRequest(request);
 				for (FileItem item : items) {
-					if(!item.isFormField()){
+					if(!item.isFormField()) {
 						String name = item.getName(); 		// ①获取名称（但，IE浏览器下带路径）
 						name = FilenameUtils.getName(name); // ②获取名称
 						// 将文件存入项目中
-						String uploadPath = this.getServletContext().getRealPath("/upload");	
+						String uploadPath = this.getServletContext().getRealPath("/uploadFile");
+						// File.separator 在windows是 \  在unix是 /
+						/** ②该上传文件是永久的 */
 						IOUtils.copy(item.getInputStream(), new FileOutputStream(uploadPath + File.separator + name));
-						// 删除文件（只能删除存在临时目录下的文件）
+						// 删除文件（只能删除存在临时目录下的临时文件）
 						item.delete();
 					}
 				}
