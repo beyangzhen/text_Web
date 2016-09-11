@@ -36,7 +36,7 @@ public class UploadFileServlet extends HttpServlet {
 		if (flag) {
 			// 创建DiskFileItemFactory（附带缓存大小，临时文件存储位置）
 			/**  ①临时文件存储: 1. 当文件很小，就直接存进缓存
-			  * 			 2. 当文件超出缓存，就会默认存入部署处的临时文件里
+			  * 			 2. 当文件超出IO流的缓存，就会默认存入部署处的临时文件里
 			  */
 			ServletContext servletContext = this.getServletConfig().getServletContext();
 			File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir"); // 获取临时目录（部署目录/work下）
