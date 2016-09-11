@@ -56,7 +56,7 @@ public class UploadFileServlet extends HttpServlet {
 						// 将文件存入项目中uploadFile文件夹下（前提：该文件夹要存在） --> 只能自动给创建文件，不能自动创建文件夹
 						String uploadPath = this.getServletContext().getRealPath("/uploadFile"); // 项目部署目录（部署目录/webapps下）
 						// File.separator 在windows是 \  在unix是 /
-						/** ②该上传文件是永久的 */
+						/** ②该上传文件是永久的（可以传到部署目录 或 其他磁盘上）*/
 						IOUtils.copy(item.getInputStream(), new FileOutputStream(uploadPath + File.separator + name));
 						// 删除文件（只能删除存在临时目录下的临时文件）
 						item.delete();
