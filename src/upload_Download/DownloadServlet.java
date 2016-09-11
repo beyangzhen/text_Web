@@ -36,7 +36,7 @@ public class DownloadServlet extends HttpServlet {
 		filename = new String(filename.getBytes("ISO-8859-1"), "UTF-8");
 		// 指定路径文件放入输入流中
 		InputStream inputStream = this.getServletContext().getResourceAsStream(filename);
-		// 设置响应头
+		// 设置响应头（响应的输出流中可附带文件）
 		response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename,"UTF-8"));
 		IOUtils.copy(inputStream, response.getOutputStream());
 		
