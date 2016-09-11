@@ -34,7 +34,7 @@ public class DownloadServlet extends HttpServlet {
 		String filename = request.getParameter("filename");
 		// 处理中文编码
 		filename = new String(filename.getBytes("ISO-8859-1"), "UTF-8");
-		// 输入流接收文件
+		// 指定路径文件放入输入流中
 		InputStream inputStream = this.getServletContext().getResourceAsStream(filename);
 		// 设置响应头
 		response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename,"UTF-8"));
