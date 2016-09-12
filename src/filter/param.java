@@ -10,12 +10,12 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-/*Ã¿¸öservletÔËĞĞÊ±¶¼»á(¾­¹ı)ÔËĞĞĞ´ºÃµÄËùÓĞFilter*/
-/*FilterÖ´ĞĞµÄË³ĞòÊÇÅäÖÃÎÄ¼şÖĞfilter-mappingĞ´µÄË³Ğò*/
+/*æ¯ä¸ªservletè¿è¡Œæ—¶éƒ½ä¼š(ç»è¿‡)è¿è¡Œå†™å¥½çš„æ‰€æœ‰Filter*/
+/*Filteræ‰§è¡Œçš„é¡ºåºæ˜¯é…ç½®æ–‡ä»¶ä¸­filter-mappingå†™çš„é¡ºåº*/
 
-public class abc implements Filter {
+public class param implements Filter {
 	
-	//tomcatÆô¶¯¹ı³ÌÖĞµ÷ÓÃ
+	//tomcatå¯åŠ¨è¿‡ç¨‹ä¸­è°ƒç”¨
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		Enumeration names = filterConfig.getInitParameterNames();
@@ -27,7 +27,7 @@ public class abc implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println("do filter");
-		chain.doFilter(request, response); //¸ÃFilterÖ´ĞĞÍê£¬FilterChainµ÷ÓÃÏÂÒ»¸öFilterÖ´ĞĞ
+		chain.doFilter(request, response); //è¯¥Filteræ‰§è¡Œå®Œï¼ŒFilterChainè°ƒç”¨ä¸‹ä¸€ä¸ªFilteræ‰§è¡Œ
 	}
 	
 	@Override
