@@ -37,8 +37,9 @@ public class EncodingFilter implements Filter {
 		
 				/* 解决get方式，中文乱码 */
 		// 因为 String name = new String(name.getBytes("ISO-8859-1"), "UTF-8")编码处理后的name值，传不到接下来的servlet中
-		HttpServletRequest myRequest = new MyRequest(request); // 增强request（将编码处理部分，嵌入增强request的getParameter()方法中）
-
+		HttpServletRequest myRequest = new MyRequest2(request); // 增强request（将编码处理部分，嵌入增强request的getParameter()方法中）
+		// HttpServletRequest myRequest = new MyRequest1(request);
+		
 		chain.doFilter(myRequest, response);
 	}
 
@@ -48,10 +49,48 @@ public class EncodingFilter implements Filter {
 
 }
 
-class MyRequest extends HttpServletRequestWrapper {
+/** 
+ *   方式一（只强化了getParameter()）
+ * 	     --> getParameter()每获取一个参数,只会将一个参数编码处理
+ *   	     --> 不用考虑两次编码处理后，编码乱了
+ * /
+public class MyHttpRequest1 extends HttpServletRequestWrapper {
+    HttpServletRequest req;
+    
+    public MyHttpRequest(HttpServletRequest old) {
+        super(old);
+        this.req=old;
+    }
+    @Override
+    public String getParameter(String name) {
+        String method = req.getMethod();
+        if("get".equalsIgnoreCase(method)){
+            String par = req.getParameter(name);
+            if(par!=null){
+                String result = null;
+                try {
+                    result=new String(par.getBytes("iso8859-1"), "utf-8");
+                } catch (UnsupportedEncodingException e) {
+                    throw new RuntimeException(e);
+                }
+                return result;
+            }
+            
+        }
+        
+        return req.getParameter(name);
+    }
+}
+
+/** 
+ *   方式二（强化了getParameter()/getParameterMap()/getParameterValues()）
+ *           --> 是在getParameterMap()中编码处理，导致getParameter()每获取一个参数，就会将整个参数map都编码处理掉
+ *           --> 需要设置的flag，来避免两次编码处理后，编码又乱了
+ * 
+ * /
+public class MyHttpRequest2 extends HttpServletRequestWrapper {
 	
 	private HttpServletRequest request;
-	
 	private boolean flag = true;
 	
 	public MyRequest(HttpServletRequest old) {
