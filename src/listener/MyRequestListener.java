@@ -3,6 +3,10 @@ package listener;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 
+/**
+ *  包括Application、Session、Request对象 初始化和销毁 	   的监听
+ *                               对象属性 增加、代替和删除 的监听
+ * /
 public class MyRequestListener implements ServletRequestListener {
 
 	@Override
