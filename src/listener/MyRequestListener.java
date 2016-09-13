@@ -4,8 +4,10 @@ import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 
 /**
- *  包括Application、Session、Request对象 初始化和销毁 	   的监听
- *                               对象属性 增加、代替和删除 的监听
+ *  包括Application：对象初始化/销毁 和 对象属性增加/代替/删除 			    的监听
+ *      Session	   ：对象初始化/销毁 和 对象属性增加/代替/删除 和 合并/绑定javaBean 的监听
+ *      Request    ：对象初始化/销毁 和 对象属性增加/代替/删除 			    的监听
+ *      
  * /
 public class MyRequestListener implements ServletRequestListener {
 
