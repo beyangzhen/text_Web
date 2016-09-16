@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <form action="${pageContext.request.contextPath}/servlet/DoFormServlet" method="post">
+    <form action="${pageContext.request.contextPath}/servlet/DealFormServlet" method="post">
         <%--使用隐藏域存储生成的token--%>
         <%--
             <input type="hidden" name="token" value="<%=session.getAttribute("token") %>">
