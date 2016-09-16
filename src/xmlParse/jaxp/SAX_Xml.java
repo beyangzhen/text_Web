@@ -1,4 +1,4 @@
-package Xml_JaxpParse;
+package xmlParse.jaxp;
 
 import java.io.File;
 import java.io.IOException;
