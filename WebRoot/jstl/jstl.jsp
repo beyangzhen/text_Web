@@ -56,12 +56,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	list.add("four");
     	request.setAttribute("list", list);
      %>
-    <c:forEach var="item" items="${requestScope.list }" varStatus="status"> 
+    <c:forEach begin="0" end="10" step="2"><!-- 相当于<c:forEach begin="0" end="5" step="1"> -->
     <!--
     其他属性：
 	    begin(默认0)  	     ：开始索引 
 	    end(默认集合最后一个元素)：结束索引	
+	    step   	             ：迭代的步长
     -->
+    	<c:out value="hello"></c:out>
+    </c:foreach>
+    
+    <c:forEach var="item" items="${requestScope.list }" varStatus="status"> 
     
     	<span
     		<!-- var代表每次获取的(一组)值 -->
