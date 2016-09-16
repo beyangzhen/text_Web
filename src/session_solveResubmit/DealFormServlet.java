@@ -11,36 +11,38 @@ public class DealFormServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
 
-            boolean b = isRepeatSubmit(request);//ÅĞ¶ÏÓÃ»§ÊÇ·ñÊÇÖØ¸´Ìá½»
+            boolean b = isRepeatSubmit(request);// åˆ¤æ–­ç”¨æˆ·æ˜¯å¦æ˜¯é‡å¤æäº¤
             if(b==true){
-                System.out.println("Çë²»ÒªÖØ¸´Ìá½»");
+                System.out.println("è¯·ä¸è¦é‡å¤æäº¤");
                 return;
             }
-            request.getSession().removeAttribute("token");//ÒÆ³ısessionÖĞµÄtoken
-            System.out.println("´¦ÀíÓÃ»§Ìá½»ÇëÇó£¡£¡");
+            request.getSession().removeAttribute("token");// ç§»é™¤sessionä¸­çš„token
+            System.out.println("å¤„ç†ç”¨æˆ·æäº¤è¯·æ±‚ï¼ï¼");
     }
         
 	/**
-	 * ÅĞ¶Ï¿Í»§¶ËÌá½»ÉÏÀ´µÄÁîÅÆºÍ·şÎñÆ÷¶ËÉú³ÉµÄÁîÅÆÊÇ·ñÒ»ÖÂ
+	 * åˆ¤æ–­å®¢æˆ·ç«¯æäº¤ä¸Šæ¥çš„ä»¤ç‰Œå’ŒæœåŠ¡å™¨ç«¯ç”Ÿæˆçš„ä»¤ç‰Œæ˜¯å¦ä¸€è‡´
+	 *      true ï¼šç”¨æˆ·é‡å¤æäº¤äº†è¡¨å• 
+	 *      falseï¼šç”¨æˆ·æ²¡æœ‰é‡å¤æäº¤è¡¨å•
+	 *
+	 *
 	 * @param request
 	 * @return 
-	 *         true ÓÃ»§ÖØ¸´Ìá½»ÁË±íµ¥ 
-	 *         false ÓÃ»§Ã»ÓĞÖØ¸´Ìá½»±íµ¥
 	 */
 	private boolean isRepeatSubmit(HttpServletRequest request) {
 		String client_token = request.getParameter("token");
-		//1¡¢Èç¹ûÓÃ»§Ìá½»µÄ±íµ¥Êı¾İÖĞÃ»ÓĞtoken£¬ÔòÓÃ»§ÊÇÖØ¸´Ìá½»ÁË±íµ¥
-		if(client_token==null){
+		// 1ã€å¦‚æœç”¨æˆ·æäº¤çš„è¡¨å•æ•°æ®ä¸­æ²¡æœ‰tokenï¼Œåˆ™ç”¨æˆ·æ˜¯é‡å¤æäº¤äº†è¡¨å•
+		if(client_token == null){
 			return true;
 		}
 		
 		String server_token = (String) request.getSession().getAttribute("token");
-		//2¡¢Èç¹ûµ±Ç°ÓÃ»§µÄSessionÖĞ²»´æÔÚToken(ÁîÅÆ)£¬ÔòÓÃ»§ÊÇÖØ¸´Ìá½»ÁË±íµ¥
-		if(server_token==null){
+		// 2ã€å¦‚æœå½“å‰ç”¨æˆ·çš„Sessionä¸­ä¸å­˜åœ¨Token(ä»¤ç‰Œ)ï¼Œåˆ™ç”¨æˆ·æ˜¯é‡å¤æäº¤äº†è¡¨å•
+		if(server_token == null){
 			return true;
 		}
 		
-		//3¡¢´æ´¢ÔÚSessionÖĞµÄToken(ÁîÅÆ)Óë±íµ¥Ìá½»µÄToken(ÁîÅÆ)²»Í¬£¬ÔòÓÃ»§ÊÇÖØ¸´Ìá½»ÁË±íµ¥
+		// 3ã€å­˜å‚¨åœ¨Sessionä¸­çš„Token(ä»¤ç‰Œ)ä¸è¡¨å•æäº¤çš„Token(ä»¤ç‰Œ)ä¸åŒï¼Œåˆ™ç”¨æˆ·æ˜¯é‡å¤æäº¤äº†è¡¨å•
 		if(!client_token.equals(server_token)){
 			return true;
 		}
