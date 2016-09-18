@@ -17,7 +17,7 @@ import xmlParse.jaxb.domain.Order;
 /**
  *  jaxb可以对XML和Java对象进行相互转换
  *
- *  编组：java对象生成xml
+ *  编组：java对象生成xml（底层：SAX实现的）
  */
 public class MarshalTest {
 
