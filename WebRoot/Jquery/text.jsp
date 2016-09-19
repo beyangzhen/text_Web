@@ -491,6 +491,40 @@
 			});
 		</script>
 		
+		
+		
+		<!-- 查找 -->
+		<script type="text/javascript">
+			$(function(){
+				// 查找儿子节点
+				console.log($('#list').children('div'));
+				// 查找最近的父节点
+				console.log($('.sub').closest('div'));
+				// 查找多级子节点
+				console.log($('#list').find('span'))
+				// 查找前面的第一个兄弟节点
+				console.log($('#list div:last').prev());
+				// 查找前面的所有兄弟节点
+				console.log($('#list div:last').prevAll());
+				// 查找前面的所有兄弟节点直到指定元素（不包括匹配元素）
+				console.log($('#list div:last').prevUntil('.ok'));
+				// 查找后面的第一个兄弟节点
+				console.log($('#list div:first').next());
+				// 查找后面的所有兄弟节点
+				console.log($('#list div:first').nextAll());
+				// 查找后面的所有兄弟节点直到指定元素（不包括匹配元素）
+				console.log($('#list div:first').nextUntil('span'));
+				// 查找两边的兄弟节点
+				console.log($('#list div').eq(2).siblings());				
+				// 查找父亲节点
+				console.log($('.sub').parent());
+				// 查找所有祖先 
+				console.log($('.sub').parents('div'));
+				// 查找所有祖先直到匹配条件（不包括匹配元素）
+				console.log($('.sub').parentsUntil('.ok'));
+			});
+		</script>
+		
 	</head>
 	<body>
 
