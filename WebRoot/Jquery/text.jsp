@@ -457,6 +457,40 @@
 			});
 		</script>
 		
+		
+		
+		<!-- 过滤 -->
+		<script type="text/javascript">
+			$(function(){
+				// 等于此下标值（索引）的元素
+				console.log($('#list div').eq(2));
+				// 第一个元素
+				console.log($('#list div').first());
+				// 最后一个元素
+				console.log($('#list div').last());
+				// 当前元素是否含有某个特定类（有：true）
+				console.log($('#list div').first().hasClass('x'));
+				// 与指定表达式匹配的元素集合
+				console.log($('#list div').filter('.xx'))
+				// 是否为某个类型
+				console.log($('#list').is('form'));
+				console.log($('#list').is('div'));
+				
+				// map（数据变换），get（jquery变成array），join（array变成string）
+				$("p").append($("input").map(function(){ 
+				    return $(this).val();
+				}).get().join(", "));
+				
+				// 包含子元素的标签（返回自身节点）
+				$('li').has('ul').css('background-color', 'red');
+				// 删除与指定表达式匹配的元素
+				$('div').not($('.xx')[0]);
+				// 指定下标匹配的子集
+				$('div').slice(2).remove();    // 选取第三个和之后的元素
+				$('div').slice(1, 2).remove(); // 选取第二个元素
+			});
+		</script>
+		
 	</head>
 	<body>
 
