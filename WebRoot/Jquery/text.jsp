@@ -380,6 +380,35 @@
 			});
 		</script>
 		
+		
+		
+		<!-- 属性 -->
+		<script type="text/javascript">
+			$(function(){
+				// 获取属性 
+				console.log($('#list').attr('class')); // main main-body
+				// 移除属性
+				$('#list').removeAttr('class');
+				// 获取匹配元素中第一个元素的属性值
+				console.log($('#list').prop('class')); // main main-body
+				// 移除由.prop()方法设置的属性集
+				$('#list').prop('username', '12345')
+				$('#list').removeProp('username');
+				// 添加样式
+				$('#list').addClass('abc');
+				// 删除样式
+				$('#list').removeClass('abc');
+				// 存在（不存在）就删除（添加）一个
+				$('#list').toggleClass('main');
+				// 取html内容
+				console.log($('#list').html());
+				// 取文本（即：标签内的内容）
+				console.log($('#list').text());
+				// 表单元素的值
+				console.log($(':text').val());
+			});
+		</script>
+		
 	</head>
 	<body>
 
