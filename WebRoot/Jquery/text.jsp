@@ -525,6 +525,45 @@
 			});
 		</script>
 		
+		
+		
+		<!-- 12. 事件 -->
+		<script type="text/javascript">
+			$(document).ready(function(){ // 页面事件绑定
+				// 元素上 "永久" 事件绑定
+				$('#onbtn').on('click', function(){
+					$('#target').on('click', function(){
+						alert('on');
+					});
+				});
+				// 元素上 "只触发一次" 事件绑定
+				$('#onebtn').on('click',function(){
+					$('#target').one('click', function(){
+						alert('one');
+					});
+				});
+				// 元素取消事件绑定
+				$('#offbtn').on('click', function(){
+					$('#target').off('click');
+				});
+				// 自动触发事件
+				$('#tbtn').on('click', function(){
+					$('#target').trigger('click'); // 自动触发id为target标签的click事件
+				});			
+				// 鼠标进或出事件
+				$('div').hover(function(){
+					console.log('鼠标进来了');
+				},function(){
+					console.log('鼠标出去了');
+					
+				});
+				// 显示或隐藏
+				$('#tgbtn').click(function(){
+					$('div').toggle(3000);
+				});
+			});
+		</script>
+		
 	</head>
 	<body>
 
