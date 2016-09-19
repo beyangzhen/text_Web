@@ -263,6 +263,35 @@
 			});
 		</script>
 		
+		
+		<!-- 测试操作 -->	
+		<script type="text/javascript">	
+			$(function(){
+				// DOM节点是否包含另一DOM节点
+				console.log($.contains(document, document.getElementById('list')))				
+				// 测试类型
+				console.log($.type([1,2,3]));
+				console.log($.type({a:1}));
+				// 是否是数组
+				console.log($.isArray([1,2]));
+				console.log($.isArray({a:1}));
+				// 是否是函数
+				var a = function(){};
+				console.log($.isFunction(a));
+				// 是否为空（null、undefined 、'' 、[] 、{} 都是空）
+				var b = {};
+				console.log($.isEmptyObject(b));
+				// 是否是纯粹的对象
+				console.log($.isPlainObject(""));
+				console.log($.isPlainObject({}));
+				// 是否是数字。
+				$.isNumeric("-10");  // true
+				$.isNumeric("");     // false			
+				// 将对象转成url参数 username=dd&password=123456
+				console.log($.param({username:'dd', password:'123456'}))
+			});
+		</script>
+		
 	</head>
 	<body>
 
