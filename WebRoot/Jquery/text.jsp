@@ -409,6 +409,54 @@
 			});
 		</script>
 		
+		
+		
+		<!-- 文档处理 -->
+		<script type="text/javascript">
+			$(function(){
+				// 节点内的尾部追加内容（与js执行appendChild方法类似）
+				$('#list').append('<div>Five</div>');
+				// 节点内的尾部追加内容（反式操作）
+				$('<div>Six</div>').appendTo('#list');
+				// 节点内的头部追加内容
+				$('#list').prepend('<div>Eight</div>');
+				// 节点内的头部追加内容（反式操作）
+				$('<div>Nine</div>').prependTo('#list');
+				
+				// 节点前添加元素
+				$('#list').before('<h1>before</h1>');
+				// 节点前添加元素（反式操作）
+				$('<h1>insertBefore</h1>').insertBefore('#list');
+				// 节点后添加元素（反式操作）
+				$('<h1>insertAfter</h1>').insertAfter('#list');
+				// 节点后添加元素
+				$('#list').after('<h1>after</h1>');
+				
+				// 节点外包元素
+				$('#list').wrap('<div class="wrap"/>');
+				// 节点外取消包元素
+				$('#list').unwrap();
+				// 所有节点外包元素
+				$('p').wrapAll('<div class="wrap"/>');
+				// 节点内部包元素
+				$('p').wrapInner('<strong/>');
+				
+				// 所有匹配元素替换成指定的HTML或DOM元素 --> 后替换前
+				$('#list div').replaceWith('<h4>hello</h4>');
+				// 所有匹配元素替换成指定的HTML或DOM元素（反式操作）
+				$('<h3>word</h3>').replaceAll('p');
+				// 清空里面内容
+				$('#list').empty().append('<div>hello</div>');
+				// 删除指定节点
+				$('#list').remove();
+				// 删除所有匹配的元素（绑定的事件、附加的数据等都会保留下来）
+				$('p').detach();
+				// 克隆一份，将此加入id为x标签内前面
+				var x = $('span').clone();
+				$('#x').append(x);
+			});
+		</script>
+		
 	</head>
 	<body>
 
