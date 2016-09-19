@@ -10,7 +10,7 @@
 		
 		
 		
-		<!-- js和jquery对象之间转化 -->
+		<!-- 1. js和jquery对象之间转化 -->
 		<script type="text/javascript">		
 			//js -> jquery
 			var f2 = $(f1)
@@ -20,7 +20,7 @@
 		
 		
 		
-		<!-- 开始入口 -->
+		<!-- 2. 开始入口 -->
 		<script type="text/javascript">
 		
 			<!-- javascript方式 -->
@@ -55,7 +55,7 @@
 		
 		
 		
-		<!-- 选择器 -->
+		<!-- 3. 选择器 -->
 		<script type="text/javascript">
 
 			<!-- 基本选择器 -->
@@ -197,7 +197,7 @@
 			
 			
 			
-		<!-- 核心部分 -->	
+		<!-- 4. 核心部分 -->	
 		<script type="text/javascript">
 			$(function() {
 				/**
@@ -223,7 +223,7 @@
 		
 		
 		
-		<!-- 数组和对象操作 -->	
+		<!-- 5. 数组和对象操作 -->	
 		<script type="text/javascript">
 			// 数组，new Array(), []
 			// 对象  new Object(), {}
@@ -266,7 +266,7 @@
 		
 		
 		
-		<!-- 测试操作 -->	
+		<!-- 6. 测试操作 -->	
 		<script type="text/javascript">	
 			$(function(){
 				// DOM节点是否包含另一DOM节点
@@ -296,7 +296,7 @@
 		
 		
 		
-		<!-- 效果 -->
+		<!-- 7. 效果 -->
 		<script type="text/javascript">
 			$(function(){
 				var b = $('#block'), btnS = $('#show'), btnH = $('#hide'), btnT = $('#toggle');
@@ -382,7 +382,7 @@
 		
 		
 		
-		<!-- 属性 -->
+		<!-- 8. 属性 -->
 		<script type="text/javascript">
 			$(function(){
 				// 获取属性 
@@ -411,7 +411,7 @@
 		
 		
 		
-		<!-- 文档处理 -->
+		<!-- 9. 文档处理 -->
 		<script type="text/javascript">
 			$(function(){
 				// 节点内的尾部追加内容（与js执行appendChild方法类似）
@@ -459,7 +459,7 @@
 		
 		
 		
-		<!-- 过滤 -->
+		<!-- 10. 过滤 -->
 		<script type="text/javascript">
 			$(function(){
 				// 等于此下标值（索引）的元素
@@ -493,7 +493,7 @@
 		
 		
 		
-		<!-- 查找 -->
+		<!-- 11. 查找 -->
 		<script type="text/javascript">
 			$(function(){
 				// 查找儿子节点
