@@ -193,9 +193,12 @@
 				// 选择下拉框
 				$(':selected');
 			});
+		</script>
 			
 			
-			<!-- 核心部分 -->
+			
+		<!-- 核心部分 -->	
+		<script type="text/javascript">
 			$(function() {
 				/**
 				each(callback)
@@ -216,7 +219,6 @@
 				var divDom = $('div').get(3); 	   // 返回dom
 				$(divDom).css('background','red'); // 需要使用${}将dom节点转成jquery对象
 			});
-			
 		</script>
 		
 	</head>
