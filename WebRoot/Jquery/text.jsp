@@ -222,6 +222,7 @@
 		</script>
 		
 		
+		
 		<!-- 数组和对象操作 -->	
 		<script type="text/javascript">
 			// 数组，new Array(), []
@@ -264,6 +265,7 @@
 		</script>
 		
 		
+		
 		<!-- 测试操作 -->	
 		<script type="text/javascript">	
 			$(function(){
@@ -289,6 +291,92 @@
 				$.isNumeric("");     // false			
 				// 将对象转成url参数 username=dd&password=123456
 				console.log($.param({username:'dd', password:'123456'}))
+			});
+		</script>
+		
+		
+		
+		<!-- 效果 -->
+		<script type="text/javascript">
+			$(function(){
+				var b = $('#block'), btnS = $('#show'), btnH = $('#hide'), btnT = $('#toggle');
+				// 显示 
+				btnS.on('click',function(){
+					// b.show(3000);
+					b.show(3000, function(){
+						console.log('显示完成后的动作');
+					});
+				});
+				// 隐藏
+				btnH.on('click',function(){
+					// b.hide(3000);
+					b.hide(3000, function(){
+						console.log('隐藏后的动作');
+					});
+				});
+				// 隐藏或显示
+				btnT.on('click',function(){
+					// b.toggle(3000);
+					b.toggle('fast', function(){ // ms, slow, fast
+						console.log('显示或隐藏')
+					});
+					// 1.9版本 .toggle(function, function, … ) 方法删除（jQuery Migrate（迁移）插件恢复此功能）
+					/* 
+					b.toggle(function(){
+						console.log('第一个函数')
+					}, function(){
+						console.log('第二个函数')					
+					}) 
+					*/
+				});
+				
+				var btnSD = $('#sd'), btnSU = $('#su'), btnST = $('#st');
+				// 向下滑动
+				btnSD.on('click',function(){
+					// b.slideDown(3000);
+					b.slideDown(3000, function(){
+						console.log('向下滑动完成后的动作');
+					});
+				});
+				// 向上滑动
+				btnSU.on('click',function(){
+					// b.slideUp(3000);
+					b.slideUp(3000, function(){
+						console.log('向上滑动后的动作');
+					});
+				});
+				// 向上或向下滑动
+				btnST.on('click',function(){
+					b.slideToggle('fast', function(){
+						console.log('向上或向下滑动')
+					});
+				});
+				
+				var btnFi = $('#fi'), btnFo = $('#fo'), btnFt = $('#ft'), btnFtg = $('#ftg');
+				// 淡入
+				btnFi.on('click',function(){
+					b.fadeIn(3000, function(){
+						console.log('淡入完成后的动作');
+					});
+				});
+				// 淡出
+				btnFo.on('click',function(){
+					b.fadeOut(3000, function(){
+						console.log('淡出后的动作');
+					});
+				});
+				// 淡入或淡出到0.25的程度
+				btnFt.on('click',function(){
+					b.fadeTo('slow', 0.25, function(){
+						console.log('淡入或淡出')
+					});
+				});
+				// 淡入或淡出
+				btnFtg.on('click',function(){
+					b.fadeToggle('fast', function(){
+						console.log('第一个函数')
+					});
+				});
 			});
 		</script>
 		
