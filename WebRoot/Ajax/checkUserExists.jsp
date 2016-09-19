@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     	messdiv.innerHTML = "error on creating xmlhttp";
 		     	return;
 		     }
-		     xmlhttp.onreadystatechange = processRequest;
+		     xmlhttp.onreadystatechange = processRequest; // 请求状态改变后，就执行处理
 		     //alert(url);
 		     xmlhttp.open("post", url, true);
 		     xmlhttp.send();
