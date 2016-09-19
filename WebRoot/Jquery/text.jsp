@@ -221,6 +221,48 @@
 			});
 		</script>
 		
+		
+		<!-- 数组和对象操作 -->	
+		<script type="text/javascript">
+			// 数组，new Array(), []
+			// 对象  new Object(), {}
+			$(function(){
+				// 遍历
+				var arr = [1,2,3,4,5], obj = {a:1,b:2,c:3};
+				$.each(arr, function(i,v){
+					console.log({i:i,v:v});
+				});
+				$.each(obj, function(k,v){
+					console.log({k:k,v:v});
+				});
+				// 对象扩展（js中：var a = {}; a['a']=1; a['b']=3）
+				var o2 = $.extend({a:1,b:2},{a:2,c:3});			
+				var o3 = {};
+				$.extend(o3, {a:1,b:2},{a:3, c:4});
+				// 过滤数组元素，第三个参数改成false就是反操作（js中：var a = [1,2,3,4]; var b = a.filter(function(n){return n>=3});）
+				var nArr=$.grep([1,2,3,4], function(n){return n>3;}, true);
+				// 将HtmlCollection变成Array（能使用数组各种操作方法）
+				var mArr = $.makeArray(document.getElementsByTagName('div'));
+				mArr.pop();
+				mArr.reverse();
+				console.log(mArr);
+				// 数据变形
+				var rows = [{name:'xiaoqiang', age:18}, {name:'xiaofang', age:18}, {name:'dd', age:25}];			
+				var arrM = $.map(rows, function(v,idx){                            // [{},{}] ==> []
+					return v.name;
+				});		
+				var arrN = $.map(["xiaoqiang", "xiaofang", "dd"], function(v,idx){ // [] ==> [{},{}]
+					return {name:v, age:18+idx};
+				});
+				// 值是否在数组里（-1不在数组里）
+				console.log($.inArray([1,2,3,4], 5));
+				// jquery数组对象变成真正的数组
+				console.log($('div').toArray());
+				// 合并两个数组
+				console.log($.merge([1,3,5,7], [2,4,6,8]).sort());			
+			});
+		</script>
+		
 	</head>
 	<body>
 
