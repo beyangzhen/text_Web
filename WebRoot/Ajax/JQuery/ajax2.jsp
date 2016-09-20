@@ -29,6 +29,7 @@
 					
 					// getJSON()
 					$.getJSON(root+'/jsonServlet', {username:'dd',password:'123456'}, function(res){
+						// 参数data，作url参数
 						console.log(res); // 可以直接当作javascript对象使用
 					});
 					
