@@ -52,7 +52,7 @@
 								return '<td>'+val+'</td>';
 							});
 							
-							return '<tr>'+tds.join(' ')+'</tr>'; // 回调函数返回的值
+							return '<tr>'+tds.join(' ')+'</tr>'; // 3. 回调函数返回的值
 						});
 						
 						s+=trs.join(' ');
