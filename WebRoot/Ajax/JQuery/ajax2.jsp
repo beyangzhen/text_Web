@@ -103,7 +103,7 @@
 				
 				
 				$.ajax({url:'${pageContext.request.contextPath }/powers', type:'POST', 
-					success:function(res){
+					success:function(res) { // res 是json对象（数据库查询后，通过writeValue(os, obj)转成json，以相应流的形式返回json，回调函数获取该响应流中json对象）
 						var table = '<table class="table table-striped table-bordered">'+ $.map(res, function(v){
 							return '<tr>'+$.map(v, function(o){
 								return '<td>'+o+'</td>';
