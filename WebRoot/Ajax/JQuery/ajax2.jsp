@@ -21,7 +21,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.1.0.min.js"></script>
 		<script type="text/javascript">
 
-			  $(function(){
+		       $(function(){
 				var root = '${pageContext.request.contextPath }'; 
 				
 				// $.get(root+'/json')   : Accept:*/*
@@ -100,7 +100,7 @@
 					console.log('error');
 				}});
 					
-			  });
+		       });
 		</script>
 	</body>
 </html>
