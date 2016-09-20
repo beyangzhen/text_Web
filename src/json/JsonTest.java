@@ -30,6 +30,8 @@ public class JsonTest {
 		person.setAge(103);
 		person.setPassword("1314250");
 		String json = mapper.writeValueAsString(person);
+		// OutputStream os = response.getOutputStream();
+		// mapper.writeValue(os, ps); // 结果返回到输出流中
 		
 		System.out.println(json);
 	}
