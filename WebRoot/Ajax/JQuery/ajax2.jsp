@@ -105,8 +105,11 @@
 				
 				$.ajax({url:'${pageContext.request.contextPath }/powers', type:'POST', 
 				        // res 是json对象（数据库查询后，通过writeValue(os, obj)转成json，以相应流的形式返回json，回调函数获取该响应流中json对象）
+					// json：[{"name":"yz", "password":"123"}, {"name":"yang", "password":"123"}]
 					success:function(res) { 
-						var table = '<table class="table table-striped table-bordered">'+ $.map(res, function(v){
+						// res 代表整个json、 v 代表遍历的单个对象
+						var table = '<table class="table table-striped table-bordered">'+ $.map(res, function(v){ 
+							// v 代表其中一个对象、 o 代表对象中遍历的单个属性
 							return '<tr>'+$.map(v, function(o){
 								return '<td>'+o+'</td>';
 							}).join(' ') + '</tr>';
