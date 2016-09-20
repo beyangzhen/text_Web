@@ -27,7 +27,7 @@
 				});
 				console.log('请求的数据：', data);
 				// 会自动将 "data对象" 转成 "url参数形式（username=&password=）"
-				$.get(root+'/ajax', data, function(d){ // function(d)：回调函数、d：返回的数据
+				$.get(root+'/ajax', data, function(d){ // data：url参数、function(d)：回调函数、d：返回的数据
 					console.log('返回的数据：', d);
 				});
 			});	
@@ -39,11 +39,10 @@
 					data[$(this).attr('name')]=$(this).val(); // 给data对象赋值
 				}); 
 				console.log('请求的数据：', data);
-				$.post(root+'/ajaxServlet', data, function(d){ // function(d)：回调函数、d：返回的数据
+				$.post(root+'/ajaxServlet', data, function(d){ // data：url参数、function(d)：回调函数、d：返回的数据
 					console.log('返回的数据：', d);
 				});
 			});	
-			
 		</script>
 		
 	</body>
