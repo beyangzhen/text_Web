@@ -10,6 +10,20 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
+/**
+ *   方式一：手写json：{"Name":"dd","Password":"12345","Age":18, IC:null, IQ:250}
+ * 
+ *   方式二：浏览器生成json：
+ *	  	(1) 写个javascript对象（不带function, undefined类型）
+ *			var o = {username:'dd', password:'123456', age:18, IC:null, IQ:250}
+ *	        (2) 用JSON.stringify(o)格式化成JSON输出
+ *		        {"username":"dd","password":"123456","age":18,"IC":null,"IQ":250}
+ * 
+ * /
+
+/**
+ *   方式三：java代码生成json（jackson方式）
+ * /
 public class JsonTest {
 
 	// java => json[string]
