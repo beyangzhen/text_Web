@@ -1,4 +1,4 @@
-package com.wxhledu.cn.web;
+package AjaxServlet.JQuery;
 
 import java.io.IOException;
 import java.util.Enumeration;
