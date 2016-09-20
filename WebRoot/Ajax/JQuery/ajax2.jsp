@@ -81,10 +81,11 @@
 				    	console.log(d);
 					},
 					error: function(){
-						console.log('error');
+				              alert('服务有异常');
 					}
 				});
 				*/
+				
 				// 发起get请求（相当于使用get()）
 				$.ajax({url:root+'/json', success:function(d){
 					cosnole.log(d);
@@ -99,6 +100,20 @@
 				}, error: function(){
 					console.log('error');
 				}});
+				
+				
+				$.ajax({url:'${pageContext.request.contextPath }/powers', type:'POST', 
+					success:function(res){
+						var table = '<table class="table table-striped table-bordered">'+ $.map(res, function(v){
+							return '<tr>'+$.map(v, function(o){
+								return '<td>'+o+'</td>';
+							}).join(' ') + '</tr>';
+						}).join(' ') + '</table>';
+						$('.content').empty().append(table);
+					}, error:function(){
+						alert('服务有异常');
+					}
+				});
 					
 		       });
 		</script>
