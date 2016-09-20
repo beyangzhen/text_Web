@@ -103,6 +103,7 @@
 				}});
 				
 				
+				// 在class为content的标签里，加上个table表格
 				$.ajax({url:'${pageContext.request.contextPath }/powers', type:'POST', 
 				        // res 是json对象（数据库查询后，通过writeValue(os, obj)转成json，以相应流的形式返回json，回调函数获取该响应流中json对象）
 					// json：[{"name":"yz", "password":"123"}, {"name":"yang", "password":"123"}]
@@ -111,9 +112,9 @@
 						var table = '<table class="table table-striped table-bordered">'+ $.map(res, function(v){ 
 							// v 代表其中一个对象、 o 代表对象中遍历的单个属性
 							return '<tr>'+$.map(v, function(o){
-								return '<td>'+o+'</td>';
-							}).join(' ') + '</tr>';
-						}).join(' ') + '</table>';
+								return '<td>'+o+'</td>'; 
+							}).join(' ') + '</tr>'; // 返回的多个td拼接后，外部加上tr
+						}).join(' ') + '</table>'; // 返回的多个tr拼接后，外部加上table
 						$('.content').empty().append(table);
 					}, error:function(){
 						alert('服务有异常');
