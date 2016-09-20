@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ajax")
+@WebServlet("/ajaxServlet")
 public class AjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
