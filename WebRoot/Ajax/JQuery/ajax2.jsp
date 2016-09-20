@@ -22,83 +22,83 @@
 		<script type="text/javascript">
 
 			  $(function(){
-					var root = '${pageContext.request.contextPath }'; 
-					
-					// $.get(root+'/json')   : Accept:*/*
-					// $.getJSON(root+'/json'): Accept:application/json
-					
-					// getJSON()
-					$.getJSON(root+'/jsonServlet', {username:'dd',password:'123456'}, function(res){
-						// 参数data，作url参数
-						console.log(res); // 可以直接当作javascript对象使用
-					});
-					
-					// getScript() --> 请求一个js文件并加载运行
-					$.getScript(root+'/Ajax/Jquery/resources/js/alert.js');
-					
-					// get() --> 返回的数据交给用户处理
-					$('.btn3').on('click', function(){
-						$.get(root+'/Ajax/Jquery/resources/js/persons.js', {}, function(res){
-							
-							var s = '<table>'
-							// 第一种解法（[{},{}] ==> <table></table>）
-							$.each(JSON.parse(res), function(idx,val){
-								s += '<tr><td>'+val.Name+'</td><td>'+val.Password+'</td><td>'+val.Age+'</td></tr>'; // {} => <tr> <td></td> ... </tr>
-							});
-							
-							// 第二种装逼解法
-							var trs = $.map(JSON.parse(res), function(v){ // [] => []
-								var tds = $.map(v,function(val){          // {} => []
-									return '<td>'+val+'</td>';
-								});
-								return '<tr>'+tds.join(' ')+'</tr>';
-							});
-							
-							s+=trs.join(' ');
-							s+='</table>';
-							$('#main').empty().append(s);
-						})
-					});
-					
-					// load() --> 加载页面到指定元素中		
-					$('.btn').on('click',function(){
-						$('#main').load(root+'/main.html');
-					});
-					$('.btn2').on('click',function(){
-						$('#main').load(root+'/page2.html', {username:'dd'}, function(){
-							console.log('我回来啦！');
+				var root = '${pageContext.request.contextPath }'; 
+				
+				// $.get(root+'/json')   : Accept:*/*
+				// $.getJSON(root+'/json'): Accept:application/json
+				
+				// getJSON()
+				$.getJSON(root+'/jsonServlet', {username:'dd',password:'123456'}, function(res){
+					// 参数data，作url参数
+					console.log(res); // 可以直接当作javascript对象使用
+				});
+				
+				// getScript() --> 请求一个js文件并加载运行
+				$.getScript(root+'/Ajax/Jquery/resources/js/alert.js');
+				
+				// get() --> 返回的数据交给用户处理
+				$('.btn3').on('click', function(){
+					$.get(root+'/Ajax/Jquery/resources/js/persons.js', {}, function(res){
+						
+						var s = '<table>'
+						// 第一种解法（[{},{}] ==> <table></table>）
+						$.each(JSON.parse(res), function(idx,val){
+							s += '<tr><td>'+val.Name+'</td><td>'+val.Password+'</td><td>'+val.Age+'</td></tr>'; // {} => <tr> <td></td> ... </tr>
 						});
+						
+						// 第二种装逼解法
+						var trs = $.map(JSON.parse(res), function(v){ // [] => []
+							var tds = $.map(v,function(val){          // {} => []
+								return '<td>'+val+'</td>';
+							});
+							return '<tr>'+tds.join(' ')+'</tr>';
+						});
+						
+						s+=trs.join(' ');
+						s+='</table>';
+						$('#main').empty().append(s);
+					})
+				});
+				
+				// load() --> 加载页面到指定元素中		
+				$('.btn').on('click',function(){
+					$('#main').load(root+'/main.html');
+				});
+				$('.btn2').on('click',function(){
+					$('#main').load(root+'/page2.html', {username:'dd'}, function(){
+						console.log('我回来啦！');
 					});
-					
-					// ajax()
-					/*
-					$.ajax({ 
-						url: root+'/json', 
-						type:'', // 默认: "GET"
-						data: {username:'dd', password:'12345'},
-						dataType:'json', // xml，html, script, json, jsonp, text
-						success: function(d){
-					    	console.log(d);
-						},
-						error: function(){
-							console.log('error');
-						}
-					});
-					*/
-					// get 发起get请求
-					$.ajax({url:root+'/json',success:function(d){
-						cosnole.log(d);
-					}});
-					// 发起post请求
-					$.ajax({url:root+'/json', type:'post', success:function(d){
-						console.log(d);
-					}});
-					// error
-					$.ajax({url:root+'/json2', type:'post', success:function(d){
-						console.log(d);
-					}, error: function(){
+				});
+				
+				// ajax()
+				/*
+				$.ajax({ 
+					url: root+'/json', 
+					type:'', // 默认: "GET"
+					data: {username:'dd', password:'12345'},
+					dataType:'json', // xml，html, script, json, jsonp, text
+					success: function(d){
+				    	console.log(d);
+					},
+					error: function(){
 						console.log('error');
-					}});
+					}
+				});
+				*/
+				// get 发起get请求
+				$.ajax({url:root+'/json',success:function(d){
+					cosnole.log(d);
+				}});
+				// 发起post请求
+				$.ajax({url:root+'/json', type:'post', success:function(d){
+					console.log(d);
+				}});
+				// error
+				$.ajax({url:root+'/json2', type:'post', success:function(d){
+					console.log(d);
+				}, error: function(){
+					console.log('error');
+				}});
 					
 			  });
 		</script>
