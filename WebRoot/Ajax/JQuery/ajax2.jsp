@@ -85,8 +85,8 @@
 					}
 				});
 				*/
-				// get 发起get请求
-				$.ajax({url:root+'/json',success:function(d){
+				// 发起get请求（相当于使用get()）
+				$.ajax({url:root+'/json', success:function(d){
 					cosnole.log(d);
 				}});
 				// 发起post请求
