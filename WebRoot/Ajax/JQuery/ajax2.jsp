@@ -103,7 +103,7 @@
 				}});
 				
 				
-				// 在class为content的标签里，加上个table表格
+				// 在class为content的标签里，加上数据转换成的table表格
 				$.ajax({url:'${pageContext.request.contextPath }/powers', type:'POST', 
 				        // res 是json对象（数据库查询后，通过writeValue(os, obj)转成json，以相应流的形式返回json，回调函数获取该响应流中json对象）
 					// json：[{"name":"yz", "password":"123"}, {"name":"yang", "password":"123"}]
