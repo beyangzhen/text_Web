@@ -35,7 +35,7 @@
 					// getScript() --> 请求一个js文件并加载运行
 					$.getScript(root+'/Ajax/Jquery/resources/js/alert.js');
 					
-					// get()
+					// get() --> 返回的数据交给用户处理
 					$('.btn3').on('click', function(){
 						$.get(root+'/Ajax/Jquery/resources/js/persons.js', {}, function(res){
 							
@@ -59,7 +59,7 @@
 						})
 					});
 					
-					// load()			
+					// load() --> 加载页面到指定元素中		
 					$('.btn').on('click',function(){
 						$('#main').load(root+'/main.html');
 					});
