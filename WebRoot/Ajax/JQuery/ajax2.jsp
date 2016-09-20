@@ -70,6 +70,36 @@
 						});
 					});
 					
+					// ajax()
+					/*
+					$.ajax({ 
+						url: root+'/json', 
+						type:'', // 默认: "GET"
+						data: {username:'dd', password:'12345'},
+						dataType:'json', // xml，html, script, json, jsonp, text
+						success: function(d){
+					    	console.log(d);
+						},
+						error: function(){
+							console.log('error');
+						}
+					});
+					*/
+					// get 发起get请求
+					$.ajax({url:root+'/json',success:function(d){
+						cosnole.log(d);
+					}});
+					// 发起post请求
+					$.ajax({url:root+'/json', type:'post', success:function(d){
+						console.log(d);
+					}});
+					// error
+					$.ajax({url:root+'/json2', type:'post', success:function(d){
+						console.log(d);
+					}, error: function(){
+						console.log('error');
+					}});
+					
 			  });
 		</script>
 	</body>
