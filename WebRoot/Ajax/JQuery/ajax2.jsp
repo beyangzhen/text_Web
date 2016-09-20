@@ -38,7 +38,7 @@
 				
 				// get() --> 返回的数据交给用户处理
 				$('.btn3').on('click', function(){
-					$.get(root+'/Ajax/Jquery/resources/js/persons.js', {}, function(res){
+					$.get(root+'/Ajax/Jquery/resources/js/persons.js', {}, function(res){ // res 是异步请求处返回的值
 						
 						var s = '<table>'
 						// 第一种解法（[{},{}] ==> <table></table>）
@@ -47,11 +47,12 @@
 						});
 						
 						// 第二种装逼解法
-						var trs = $.map(JSON.parse(res), function(v){ // [] => []
-							var tds = $.map(v,function(val){          // {} => []
+						var trs = $.map(JSON.parse(res), function(v){ // 前一个参数遍历的每个项 
+							var tds = $.map(v,function(val){      // {} => []
 								return '<td>'+val+'</td>';
 							});
-							return '<tr>'+tds.join(' ')+'</tr>';
+							
+							return '<tr>'+tds.join(' ')+'</tr>'; // 回调函数返回的值
 						});
 						
 						s+=trs.join(' ');
