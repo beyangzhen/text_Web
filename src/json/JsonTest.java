@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 /**
- *  json：1.json对象  ：符合json格式的对象
- *	  2.json数组  ：符合json格式的数组
+ *  json：1.json对象  ：符合json格式的js对象（也是一种js对象）
+ *	  2.json数组  ：符合json格式的js数组
  *	  3.json字符串：符合json格式的字符串
  *
  *
